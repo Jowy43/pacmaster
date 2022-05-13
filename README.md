@@ -10,7 +10,8 @@ El principal objetivo es la conectividad para la creación de un juego multijuga
 
 ## Tecnologías
 1. **Unity 3D**</br>
-Unity va a ser nuestro Motor de Juego usado. No es una tecnología que dimos en el curso, pero puesto que nos da facilidades a la hora de iniciar el proyecto y tiene una Asset Store muy completa, podremos centrarnos en la parte mas técnica del proyecto.
+Unity va a ser nuestro Motor de Juego usado. No es una tecnología que dimos en el curso, pero puesto que nos da facilidades a la hora de iniciar el proyecto y tiene una Asset Store muy completa, podremos centrarnos en la parte mas técnica del proyecto.</br>
+Versión usada: 2021.3.2f1
 2. **Apache Kafka**</br>
 Usamos Kafka para la creación de un servidor. Para ello hemos usado la dependencia de [Confluent dotNET](https://github.com/confluentinc/confluent-kafka-dotnet) importandolo en el proyecto con [NuGet](https://github.com/GlitchEnzo/NuGetForUnity/releases). Para una guía mas detallada, hay un apartado en la documentación de implementación de Kafka.</br>
 Es necesario crear un Kafka Cluster y despues indicar en el proyecto la ip y el puerto del mismo para poder conectarnos a el.
