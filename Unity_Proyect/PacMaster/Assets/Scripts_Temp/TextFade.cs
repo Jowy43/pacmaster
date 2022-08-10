@@ -96,6 +96,14 @@ namespace com.pacmaster.utils
             }
             return vector;
         }
-    }
 
+        /// <summary>
+        /// Speeds the fade up a notch
+        /// </summary>
+        /// <param name="speed">the ammount to speed up</param>
+        public void SpeedUp(float speed)
+        {
+            fadeSpeed += speed;
+        }
+    }
 }
