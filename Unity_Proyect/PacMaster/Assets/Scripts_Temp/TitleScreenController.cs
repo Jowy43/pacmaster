@@ -25,13 +25,13 @@ namespace com.pacmaster.menu
         {
             if (textFade) textFade.ResetSpeed();
             titleScreenAnimator.gameObject.SetActive(true);
-            if (titleScreenAnimator) titleScreenAnimator.SetTrigger("TitleScreenFadeIn");
+            if (titleScreenAnimator) titleScreenAnimator.SetTrigger("FadeIn");
         }
 
         public void DisableTitleScreen()
         {
             if (textFade) textFade.SpeedUp(fadeSpeedUp);
-            if (titleScreenAnimator) titleScreenAnimator.SetTrigger("TitleScreenFadeOut");
+            if (titleScreenAnimator) titleScreenAnimator.SetTrigger("FadeOut");
         }
 
     }
