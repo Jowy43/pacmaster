@@ -15,6 +15,7 @@ namespace com.pacmaster.utils
         [Tooltip("Speed of the fade efect")]
         [Range(1f, 10f)]
         private float fadeSpeed;
+        private float initialFadeSpeed;
 
         [SerializeField]
         [Tooltip("Min and Max Fade ammount (cap on 0 and 1)")]
@@ -35,6 +36,7 @@ namespace com.pacmaster.utils
         // Start is called before the first frame update
         void Start()
         {
+            initialFadeSpeed = fadeSpeed;
             fadeRange = FixVector2(fadeRange);
             _textMesh = GetComponent<TextMeshProUGUI>();
             _initialColor = Color.Lerp(_textMesh.color, fadeColorTowards, fadeRange.x);
@@ -104,6 +106,11 @@ namespace com.pacmaster.utils
         public void SpeedUp(float speed)
         {
             fadeSpeed += speed;
+        }
+
+        public void ResetSpeed()
+        {
+            fadeSpeed = initialFadeSpeed;
         }
     }
 }

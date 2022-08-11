@@ -1,7 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using com.pacmaster.character;
+using com.pacmaster.utils;
 
 namespace com.pacmaster.menu
 {
@@ -21,8 +20,14 @@ namespace com.pacmaster.menu
         private MainMenuScreenController mainMenu;
         [SerializeField]
         private CharacterSelectionScreenController characterSelection;
-        
+        [SerializeField]
+        private LevelTransition levelTransition;
+
+        private CharacterDataController _characterData;
+
         private MenuWindows _currentWindow;
+
+        private MenuWindows _previousWindow;
 
         private MenuWindows CurrentWindow
         {
@@ -31,6 +36,7 @@ namespace com.pacmaster.menu
             { 
                 if (!_currentWindow.Equals(value))
                 {
+                    _previousWindow = _currentWindow;
                     _currentWindow = value;
                     Debug.Log("You are currently in " + value.ToString());
                     MakeWindowTransition();
@@ -42,6 +48,7 @@ namespace com.pacmaster.menu
         // Start is called before the first frame update
         private void Start()
         {
+            _characterData = FindObjectOfType<CharacterDataController>();
             if (!titleScreen) Debug.LogWarning("There is no titleScreen");
             if (!mainMenu)
             {
@@ -58,11 +65,12 @@ namespace com.pacmaster.menu
             }
             else
             {
-                characterSelection.SubscribePacmanButton(() => Debug.Log("Pacman"));
-                characterSelection.SubscribeBlinkyButton(() => Debug.Log("Blinky"));
-                characterSelection.SubscribeClydeButton(() => Debug.Log("Clyde"));
-                characterSelection.SubscribePinkyButton(() => Debug.Log("Pinky"));
-                characterSelection.SubscribeInkyButton(() => Debug.Log("Inky"));
+                characterSelection.SubscribePacmanButton(() => LoadSinglePlayerLevelWithCharacter(CharacterDataController.PacmanCharacters.Pacman));
+                characterSelection.SubscribeBlinkyButton(() => LoadSinglePlayerLevelWithCharacter(CharacterDataController.PacmanCharacters.Blinky));
+                characterSelection.SubscribeClydeButton(() => LoadSinglePlayerLevelWithCharacter(CharacterDataController.PacmanCharacters.Clyde));
+                characterSelection.SubscribePinkyButton(() => LoadSinglePlayerLevelWithCharacter(CharacterDataController.PacmanCharacters.Pinky));
+                characterSelection.SubscribeInkyButton(() => LoadSinglePlayerLevelWithCharacter(CharacterDataController.PacmanCharacters.Inky));
+                characterSelection.SubscribeBackButton(GoBack);
             }
 
             CurrentWindow = MenuWindows.TitleScreen;
@@ -85,6 +93,21 @@ namespace com.pacmaster.menu
                     GoToMainMenu();
                 }
             }
+        }
+
+        private void GoBack()
+        {
+            switch (_previousWindow)
+            {
+                case MenuWindows.MainMenu:
+                    GoToMainMenu();
+                    break;
+            }
+        }
+
+        private void LoadSinglePlayerLevelWithCharacter(CharacterDataController.PacmanCharacters playerCharacter)
+        {
+            levelTransition.StartLevelTransition(_characterData.SetCharacter(playerCharacter), 1);
         }
 
         private void MakeWindowTransition()

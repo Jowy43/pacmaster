@@ -23,6 +23,7 @@ namespace com.pacmaster.menu
 
         public void ActivateTitleScreen()
         {
+            if (textFade) textFade.ResetSpeed();
             titleScreenAnimator.gameObject.SetActive(true);
             if (titleScreenAnimator) titleScreenAnimator.SetTrigger("TitleScreenFadeIn");
         }

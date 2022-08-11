@@ -19,6 +19,8 @@ namespace com.pacmaster.menu
         private Button pinkyButton;
         [SerializeField]
         private Button inkyButton;
+        [SerializeField]
+        private Button backButton;
 
 
         // Start is called before the first frame update
@@ -61,6 +63,11 @@ namespace com.pacmaster.menu
         public void SubscribeInkyButton(UnityAction action)
         {
             inkyButton.onClick.AddListener(action);
+        }
+
+        public void SubscribeBackButton(UnityAction action)
+        {
+            backButton.onClick.AddListener(action);
         }
     }
 }
