@@ -23,15 +23,19 @@ public class packManController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxis("Horizontal");
-        verticalMove = Input.GetAxis("Vertical");
-        playerInput = new Vector3(horizontalMove, 0, verticalMove);
-        playerInput = Vector3.ClampMagnitude(playerInput, 1);
-        camDirection();
-        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
-        pacManChCon.transform.LookAt(pacman.transform.position + movePlayer);
-        pacManChCon.Move(movePlayer * packManSpeed * Time.deltaTime);
+        if (Input.GetAxis("Horizontal") != 0f || Input.GetAxis("Vertical") != 0)
+        {
+            horizontalMove = Input.GetAxis("Horizontal");
+            verticalMove = Input.GetAxis("Vertical");
+            playerInput = new Vector3(horizontalMove, 0, verticalMove);
+            playerInput = Vector3.ClampMagnitude(playerInput, 1);
+            camDirection();
+            movePlayer = playerInput.x * camRight + playerInput.z * camForward;
+            pacManChCon.transform.LookAt(pacman.transform.position + movePlayer);
+            pacManChCon.Move(movePlayer * packManSpeed * Time.deltaTime);
 
+
+        }
 
     }
     void camDirection()
