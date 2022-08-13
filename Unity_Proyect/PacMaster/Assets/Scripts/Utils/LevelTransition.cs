@@ -16,13 +16,18 @@ namespace com.pacmaster.utils
         public void StartLevelTransition(Color color, int level)
         {
             this.level = level;
-            image.color = color;
+            SetImageColor(color);
             animator.SetTrigger("EndLevel");
         }
 
         public void TransitionLevel()
         {
             SceneManager.LoadScene(level);
+        }
+
+        public void SetImageColor(Color color)
+        {
+            image.color = color;
         }
     }
 }

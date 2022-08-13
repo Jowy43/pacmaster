@@ -8104,7 +8104,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2347443180035925384, guid: 54ddb9605cc4a344b9ed74c21d34ef5f, type: 3}
       propertyPath: m_Color.a
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6163605707547916493, guid: 54ddb9605cc4a344b9ed74c21d34ef5f, type: 3}
       propertyPath: m_Name
@@ -8148,11 +8148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9063822238028999001, guid: 54ddb9605cc4a344b9ed74c21d34ef5f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 9063822238028999001, guid: 54ddb9605cc4a344b9ed74c21d34ef5f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1000
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 9063822238028999001, guid: 54ddb9605cc4a344b9ed74c21d34ef5f, type: 3}
       propertyPath: m_LocalPosition.x
