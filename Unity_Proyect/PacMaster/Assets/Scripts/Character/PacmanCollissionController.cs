@@ -13,7 +13,6 @@ namespace com.pacmaster.character
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Hola");
             if (other.name.StartsWith("Little"))
             {
                 smallPellet.ActivateEvent();

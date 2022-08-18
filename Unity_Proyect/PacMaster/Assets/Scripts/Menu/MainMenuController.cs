@@ -50,11 +50,19 @@ namespace com.pacmaster.menu
             }
         }
 
-
         // Start is called before the first frame update
         private void Start()
         {
+            Cursor.visible = true;
             _characterData = FindObjectOfType<CharacterDataController>();
+            if (_characterData)
+            {
+                levelTransition.SetImageColor(_characterData.color);
+            }
+            else
+            {
+                Debug.LogWarning("No character data found in scene");
+            }
             if (!titleScreen) Debug.LogWarning("There is no titleScreen");
             if (!mainMenu)
             {

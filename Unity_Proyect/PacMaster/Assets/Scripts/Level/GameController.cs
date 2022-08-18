@@ -13,6 +13,12 @@ namespace com.pacmaster.level
         private float timerSeconds = 30 * 60;
         [SerializeField]
         private TextMeshProUGUI timer;
+        [SerializeField]
+        private TextMeshProUGUI victory;
+        [SerializeField]
+        private string pacmanVictoryText;
+        [SerializeField]
+        private string ghostVictoryText;
 
         [Header("Events")]
         [SerializeField]
@@ -20,11 +26,23 @@ namespace com.pacmaster.level
         [SerializeField]
         private int pelletSubstraction = 10;
 
+        [SerializeField]
+        private GameEvent startGame;
+
+        [SerializeField]
+        private GameEvent pacmanWins;
+
+        [SerializeField]
+        private GameEvent ghostWins;
+
+        private bool gameEnded = false;
+        private bool gameStarted = false;
+
         // Start is called before the first frame update
         void Start()
         {
-            if (!timer) Debug.LogWarning("There is no timer text set");
-            if (!smallPellet)
+            if (!timer) Debug.LogWarning("There is no timer text set"); 
+            if(!smallPellet)
             {
                 Debug.LogWarning("There is no smallPellet event");
             }
@@ -32,20 +50,45 @@ namespace com.pacmaster.level
             {
                 smallPellet.RegisterListener(PacmanAtePellet);
             }
+            if (!startGame)
+            {
+                Debug.LogWarning("There is no startGame event");
+            }
+            else
+            {
+                startGame.RegisterListener(StartGame);
+            }
+            if (!pacmanWins)
+            {
+                Debug.LogWarning("There is no pacmanWins event");
+            }
+            else
+            {
+                pacmanWins.RegisterListener(PacmanWins);
+            }
+            if (!ghostWins)
+            {
+                Debug.LogWarning("There is no ghostWins event");
+            }
+            else
+            {
+                ghostWins.RegisterListener(GhostWins);
+            }
         }
 
         private void FixedUpdate()
         {
-            if (timerSeconds > 0)
+            if (!gameEnded && gameStarted)
             {
                 timerSeconds -= Time.deltaTime;
                 timer.text = GetTimeText();
 
                 if (timerSeconds <= 0)
                 {
-                    EndGame();
+                    pacmanWins.ActivateEvent();
                 }
             }
+            
         }
 
         private string GetTimeText()
@@ -58,10 +101,21 @@ namespace com.pacmaster.level
             timerSeconds -= pelletSubstraction;
         }
 
-
-        private void EndGame()
+        private void StartGame()
         {
-            Debug.Log("GAME FINISHED AND FOKING PACMAN WINNS M8");
+            gameStarted = true;
+        }
+
+        private void PacmanWins()
+        {
+            gameEnded = true;
+            victory.text = pacmanVictoryText;
+        }
+
+        private void GhostWins()
+        {
+            gameEnded = true;
+            victory.text = ghostVictoryText;
         }
 
     }

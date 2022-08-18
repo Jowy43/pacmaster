@@ -18,10 +18,13 @@ namespace com.pacmaster.character
         private float speed;
 
         [SerializeField]
-        [Range(0f, 0.1f)]
+        [Range(0f, 0.2f)]
         private float turnSmoothTime;
 
         private float turnSmoothVelocity;
+
+        [SerializeField]
+        private GameObject cinemachineObject;
 
 
 
@@ -29,6 +32,11 @@ namespace com.pacmaster.character
         private void Start()
         {
             if (!pacmanController) Debug.LogWarning("No Pacman Character Controller found");
+        }
+
+        private void OnEnable()
+        {
+            cinemachineObject.SetActive(true);
         }
 
         private void FixedUpdate()
