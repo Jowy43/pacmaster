@@ -7,6 +7,7 @@ PacMaster se ha creado con el fin de presentarlo como proyecto de fin de curso p
 El principal objetivo es la conectividad para la creación de un juego multijugador en linea.
 
 [Documentación de la aplicación](https://docs.google.com/document/d/1RcDKVdtRN3SXSTfskAkt5VghlbU7UhO6GX8g62Y2wZ4/edit?usp=sharing)
+[Presentación de la aplicación](https://1drv.ms/p/s!Ag1YkQf6CsrYsBO54zvm8eHQJack?e=n9SfgR)
 
 ## Tecnologías
 1. **Unity 3D**</br>
